@@ -49,11 +49,17 @@ class BinarySearchTree{
 
    
    
-   /*
-   in-order traversal
+   /**
+    * In-Order Traversal
+    * Prints the contents of the tree in sorted order.
+    * @param root The root of the tree to be printed.
    */
    public void inOrderTraversal(Node root){
-      //implement me
+      if(root == null) return;//Base case: root parameter is null, this branch of the tree traversal is finished, so do nothing and exit the function.
+      inOrderTraversal(root.left);
+      System.out.print(" " + root.value + " ");
+      inOrderTraversal(root.right);
+      return;
    }
    
    
@@ -167,15 +173,15 @@ public class TreeDemo{
       t1.insert(9);
       t1.insert(90);
       t1.insert(22);
-            
-      /*System.out.print("in-order :   ");
-      t1.inOrderTraversal(t1.root);
-      System.out.println();*/
 
       System.out.println("Min Value: " + t1.getMin(t1.root));
       System.out.println("Max Value: " + t1.getMax(t1.root));
       System.out.println("Try to find a good value: " + t1.find(t1.root, 18));//This should print true because 18 is in the tree.
       System.out.println("Try to find a bad value: " + t1.find(t1.root, 81));//This should print false because 81 is not in the tree.
+
+      System.out.print("in-order : ");
+      t1.inOrderTraversal(t1.root);
+      System.out.println();
            
       
    }  
