@@ -85,7 +85,6 @@ class BinarySearchTree{
     * @return The minimum value of the tree with the provided root.
    */
    public int getMin(Node root){
-      //implement me
       Node temp = root;//Begin at the root of the current tree
 
       while(temp.left != null) {//Continue looping until temp is the left-most node in the tree.
@@ -93,16 +92,22 @@ class BinarySearchTree{
       }
       return temp.value;//Return the minimum node value in the tree. 
    }
-  
-  
-  
-   /*
-   a method to find the node in the tree
-   with a largest key
-   */
+
+
+
+   /**
+    * A method to find the node in the tree
+    * with the largest key
+    * @param root The root of the tree
+    * @return The maximum value of the tree with the provided root.
+    */
    public int getMax(Node root){
-	  //implement me
-      return 0;
+      Node temp = root;//Begin at the root of the current tree
+
+      while(temp.right != null) {//Continue looping until temp is the right-most node in the tree.
+         temp = temp.right;//Update temp to be its right node.
+      }
+      return temp.value;//Return the maximum node value in the tree.
    }
    
    
@@ -160,6 +165,7 @@ public class TreeDemo{
       System.out.println();*/
 
       System.out.println("Min Value: " + t1.getMin(t1.root));
+      System.out.println("Max Value: " + t1.getMax(t1.root));
            
       
    }  
