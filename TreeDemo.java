@@ -13,8 +13,11 @@ class Node{
 class BinarySearchTree{
 
    Node root;
-   
-   
+
+   public void insert(int value) {
+      this.root = insert(this.root, value);
+   }
+
    /*
    recursive insert method
    */
@@ -75,12 +78,20 @@ class BinarySearchTree{
    
    
    
-   /*
-   a method to find the node in the tree
-   with a smallest key
+   /**
+   * A method to find the node in the tree
+   * with a smallest key
+    * @param root The root of the tree
+    * @return The minimum value of the tree with the provided root.
    */
    public int getMin(Node root){
       //implement me
+      Node temp = root;//Begin at the root of the current tree
+
+      while(temp.left != null) {//Continue looping until temp is the left-most node in the tree.
+         temp = temp.left;//Update temp to be its left node.
+      }
+      return temp.value;//Return the minimum node value in the tree. 
    }
   
   
@@ -91,6 +102,7 @@ class BinarySearchTree{
    */
    public int getMax(Node root){
 	  //implement me
+      return 0;
    }
    
    
@@ -143,9 +155,11 @@ public class TreeDemo{
       t1.insert(90);
       t1.insert(22);
             
-      System.out.print("in-order :   ");
+      /*System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
-      System.out.println();
+      System.out.println();*/
+
+      System.out.println("Min Value: " + t1.getMin(t1.root));
            
       
    }  
