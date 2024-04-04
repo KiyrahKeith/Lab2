@@ -67,13 +67,21 @@ class BinarySearchTree{
    
    
    
-   /*
-   a method to find the node in the tree
-   with a specific value
+   /**
+    * A method to find the node in the tree with a specific value
+    * @param root The root of the tree to be searched
+    * @param key The key of the node to be found in the tree
+    * @return Returns true if the node is found in the tree. Returns false if the node with the specified key could not be found.
    */
    public boolean find(Node root, int key){
-	  //implement me
-      return false;           
+      Node temp = root;//Start searching for the node at the root of the tree.
+
+      while(temp != null) {//Loop through the tree until you reach a null branch. 
+         if(temp.value == key) return true;//If the current node matches the key, return true.
+         if(temp.value < key) temp = temp.right;//If the current node is smaller than the requested key, move to the right.
+         if(temp.value > key) temp = temp.left;//If the current node is larger than the requested key, move to the left.
+      }
+      return false;//If the tree has been traversed and the key wasn't found, return false. They key is not in the tree.
    }
    
    
@@ -166,6 +174,8 @@ public class TreeDemo{
 
       System.out.println("Min Value: " + t1.getMin(t1.root));
       System.out.println("Max Value: " + t1.getMax(t1.root));
+      System.out.println("Try to find a good value: " + t1.find(t1.root, 18));//This should print true because 18 is in the tree.
+      System.out.println("Try to find a bad value: " + t1.find(t1.root, 81));//This should print false because 81 is not in the tree.
            
       
    }  
