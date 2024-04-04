@@ -1,7 +1,20 @@
+/**
+ * A class used to store a single node's information.
+ */
 class Node{
+   /**
+    * The integer value of the current node
+    */
    int value;
+   /**
+    * The left and right children of the current node
+    */
    Node left, right;
-   
+
+   /**
+    * Constructor to create a new node with the specified value
+    * @param value The value of the new node to be created.
+    */
    public Node(int value){
       this.value = value;
       left = null;
@@ -10,16 +23,29 @@ class Node{
 
 }
 
+/**
+ * A class used to create and modify BinarySearchTrees
+ */
 class BinarySearchTree{
 
+   /**
+    * The root node of the BinarySearchTree
+    */
    Node root;
 
+   /**
+    * Inserts a new node with the specified value into the binary search tree.
+    * @param value The value of the new node to be added to the tree.
+    */
    public void insert(int value) {
-      this.root = insert(this.root, value);
+      this.root = insert(this.root, value);//Call the recursive method to add the new node. This method will return the root, so set the root of the current tree equal to the returned node.
    }
 
-   /*
-   recursive insert method
+   /**
+    * Recursive helper method to insert a new node into the specified tree. This method should only be called from the insert(int value) method.
+    * @param The root node of the current branch being traversed.
+    * @param value The value of the new node to be added to the tree.
+    * @return The root node of the current tree.
    */
    public Node insert(Node root, int value){
       //base case
@@ -132,13 +158,14 @@ class BinarySearchTree{
       }
       return temp.value;//Return the maximum node value in the tree.
    }
-   
-   
-   
-   /*
-   this method will not compile until getMax
-   is implemented
-   */
+
+
+   /**
+    * Deletes a node with the specified key value from the tree.
+    * @param root The root of the tree
+    * @param key The key of the node to be deleted from the tree.
+    * @return The root node of the tree
+    */
    public Node delete(Node root, int key){
       
       if(root == null){
@@ -174,8 +201,12 @@ class BinarySearchTree{
 
 
 public class TreeDemo{
+   /**
+    * The starting point of the program
+    * @param args The initial argument
+    */
    public static void main(String[] args){
-      BinarySearchTree t1  = new BinarySearchTree();
+      BinarySearchTree t1  = new BinarySearchTree();//Create a new binary search tree and populate it with nodes.
       t1.insert(24);
       t1.insert(80);
       t1.insert(18);
@@ -183,23 +214,24 @@ public class TreeDemo{
       t1.insert(90);
       t1.insert(22);
 
-      System.out.println("Min Value: " + t1.getMin(t1.root));
-      System.out.println("Max Value: " + t1.getMax(t1.root));
+      System.out.println("Min Value: " + t1.getMin(t1.root));//Test the minValue method
+      System.out.println("Max Value: " + t1.getMax(t1.root));//Test the maxValue method
       System.out.println("Try to find a good value: " + t1.find(t1.root, 18));//This should print true because 18 is in the tree.
       System.out.println("Try to find a bad value: " + t1.find(t1.root, 81));//This should print false because 81 is not in the tree.
 
+      //Test the inOrderTraversal method
       System.out.print("in-order : ");
       t1.inOrderTraversal(t1.root);
       System.out.println();
 
+      //Test the preOrderTraversal method
       System.out.print("pre-order : ");
       t1.preOrderTraversal(t1.root);
       System.out.println();
 
+      //Test the postOrderTraversal method
       System.out.print("post-order : ");
       t1.postOrderTraversal(t1.root);
       System.out.println();
-           
-      
    }  
 }
