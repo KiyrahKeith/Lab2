@@ -37,14 +37,19 @@ class BinarySearchTree{
       
       return root;
    }
-   
-   
-   
-   /*
-   pre-order traversal
-   */
+
+
+
+   /**
+    * Pre-Order Traversal
+    * Prints the contents of the tree in pre-order.
+    * @param root The root of the tree to be printed.
+    */
    public void preOrderTraversal(Node root){
-      //implement me
+      if(root == null) return;//Base case: root parameter is null, this branch of the tree traversal is finished, so do nothing and exit the function.
+      System.out.print(" " + root.value + " ");//Print the current node
+      preOrderTraversal(root.left);//Recursively traverse left
+      preOrderTraversal(root.right);//Recursively traverse right
    }
 
    
@@ -56,10 +61,9 @@ class BinarySearchTree{
    */
    public void inOrderTraversal(Node root){
       if(root == null) return;//Base case: root parameter is null, this branch of the tree traversal is finished, so do nothing and exit the function.
-      inOrderTraversal(root.left);
-      System.out.print(" " + root.value + " ");
-      inOrderTraversal(root.right);
-      return;
+      inOrderTraversal(root.left);//Recursively traverse left
+      System.out.print(" " + root.value + " ");//Print the current node
+      inOrderTraversal(root.right);//Recursively traverse right
    }
    
    
@@ -181,6 +185,10 @@ public class TreeDemo{
 
       System.out.print("in-order : ");
       t1.inOrderTraversal(t1.root);
+      System.out.println();
+
+      System.out.print("pre-order : ");
+      t1.preOrderTraversal(t1.root);
       System.out.println();
            
       
